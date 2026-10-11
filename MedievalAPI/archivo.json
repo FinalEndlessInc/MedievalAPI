@@ -1,0 +1,16 @@
+{
+    "arreglo": [
+        {
+            "id": 1,
+            "titutlo": "Simisear",
+            "descripcion": "Monke de fueguito",
+            "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/9/9e/latest/20220224191036/Simisear_V_%28Astros_Brillantes_TCG%29.png"
+        },
+        {
+            "id": 2,
+            "titutlo": "Pansear",
+            "descripcion": "Monke de fuieguito mini mini",
+            "imagen": "https://images.cardmine.io/pokemon/en/sv7/21/large.webp"
+        }
+    ]
+}
