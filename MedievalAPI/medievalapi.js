@@ -88,6 +88,29 @@ const server = http.createServer((request,response) => {
         break;
 
         case "DELETE":
+            request.on("data", info => {
+                const objeto_tarjeta_borrar = JSON.parse(info);
+                
+                for(i = 0; i < archivo.arreglo.length; i++){
+                    if(archivo.arreglo[i].id == objeto_tarjeta_borrar.id){
+                        archivo.arreglo.splice(i, 1);
+                        break;
+                    }
+                }
+
+                fs.writeFile("./archivo.json", JSON.stringify(archivo), err => {
+                    if(err){
+                        console.log(err);
+                    }else{
+                        response.statusCode = 200;
+                        response.setHeader("Content-Type", "application/json");
+                        response.end(JSON.stringify({
+                            mensaje: "La tarjeta se ha borrado exitosamente"
+                        }));
+                    }
+                })
+
+            });
         break;
 
         case "OPTIONS":

@@ -85,6 +85,22 @@ fetch(url_endpoint).then(recurso => recurso.json()).then(respuesta => {
 
 
         const Icono_Borrar = clonTarjeta.querySelector(".Icono_Borrar");
+        Icono_Borrar.addEventListener("click",() => {
+            const objeto_tarjeta_borrar = {
+                id: respuesta.arreglo[_i].id
+            }
+            if(confirm("Estas seguro que quieres borrar esta tarjeta?")){
+                fetch(url_endpoint + "/BorrarTarjeta", {
+                    method: "DELETE",
+                    body: JSON.stringify(objeto_tarjeta_borrar)
+                }).then(recurso => recurso.json()).then(respuesta => {
+                    alert(respuesta.mensaje);
+                    window.location.reload();
+                });
+            }
+            
+
+        });
     }
     ColeccionItems.appendChild(PantallaAgregarItem);
 });
@@ -132,6 +148,11 @@ function CrearTarjeta(){
             }).then(respuesta => {
 
             });
+    });
+
+    const boton_cancelar = nuevaTarjeta.querySelector(".boton_cancelar");
+    boton_cancelar.addEventListener("click", () => {
+        nuevaTarjeta.remove();
     });
 
 }
